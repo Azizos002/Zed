@@ -1,0 +1,98 @@
+<mxGraphModel dx="1422" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    
+    <mxCell id="Container" value="Plateforme de Cyberdéfense Autonome" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="250" y="40" width="600" height="700" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Actor_OSINT" value="Sources Externes CTI&lt;br&gt;(OSINT)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="80" y="100" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="Actor_Admin" value="Administrateur&lt;br&gt;Sécurité" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="80" y="600" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="Actor_User" value="Utilisateur Final&lt;br&gt;(Global ou IT)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="950" y="350" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="Actor_Agents" value="Système&lt;br&gt;Multi-Agents" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="80" y="250" width="30" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="Actor_System" value="Moteur Détection&lt;br&gt;(Suricata &amp; IA)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="80" y="450" width="30" height="60" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_Scrape" value="Collecter l&#39;actualité&lt;br&gt;mondiale (Scraping)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="Container">
+      <mxGeometry x="50" y="50" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="UC_Extract" value="Extraire règles, IOCs&lt;br&gt;et cours pédagogiques" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="Container">
+      <mxGeometry x="250" y="50" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="UC_Update" value="Mettre à jour les&lt;br&gt;défenses (Suricata/IA)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="Container">
+      <mxGeometry x="430" y="140" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="UC_FormPro" value="Diffuser formation&lt;br&gt;préventive ciblée" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="Container">
+      <mxGeometry x="430" y="50" width="140" height="70" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_Local" value="Détecter une&lt;br&gt;attaque locale" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="Container">
+      <mxGeometry x="50" y="350" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="UC_Block" value="Confiner la menace&lt;br&gt;(SOAR)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="Container">
+      <mxGeometry x="250" y="350" width="140" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="UC_FormReact" value="Sensibiliser la&lt;br&gt;victime post-incident" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="Container">
+      <mxGeometry x="430" y="350" width="140" height="70" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_Audit" value="Auditer l&#39;infra&lt;br&gt;et les modèles IA" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="Container">
+      <mxGeometry x="50" y="550" width="140" height="70" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Edge_OSINT" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Actor_OSINT" target="UC_Scrape">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_Agents1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Actor_Agents" target="UC_Scrape">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_Agents2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Actor_Agents" target="UC_Update">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_Agents3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Actor_Agents" target="UC_FormPro">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_System1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Actor_System" target="UC_Local">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_System2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Actor_System" target="UC_Block">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_Admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Actor_Admin" target="UC_Audit">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_User1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UC_FormPro" target="Actor_User">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_User2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="UC_FormReact" target="Actor_User">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Edge_Inc1" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=none;html=1;endArrow=open;endSize=12;dashed=1;" edge="1" parent="Container" source="UC_Scrape" target="UC_Extract">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_Inc2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=none;html=1;endArrow=open;endSize=12;dashed=1;" edge="1" parent="Container" source="UC_Extract" target="UC_Update">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_Ext1" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="edgeStyle=none;html=1;endArrow=open;endSize=12;dashed=1;" edge="1" parent="Container" source="UC_Extract" target="UC_FormPro">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_Inc3" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=none;html=1;endArrow=open;endSize=12;dashed=1;" edge="1" parent="Container" source="UC_Local" target="UC_Block">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="Edge_Trig" value="&amp;lt;&amp;lt;trigger&amp;gt;&amp;gt;" style="edgeStyle=none;html=1;endArrow=open;endSize=12;dashed=1;" edge="1" parent="Container" source="UC_Block" target="UC_FormReact">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel> 

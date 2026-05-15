@@ -1,0 +1,107 @@
+<mxfile host="app.diagrams.net">
+    <diagram name="DFD CyberDefense">
+        <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" connect="1">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <!-- External Entities -->
+                <mxCell id="net" value="Réseau" style="shape=rectangle;fillColor=#dae8fc;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="40" y="200" width="120" height="60" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="admin" value="Administrateur" style="shape=rectangle;fillColor=#dae8fc;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1000" y="420" width="150" height="60" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="users" value="Utilisateurs" style="shape=rectangle;fillColor=#dae8fc;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1250" y="520" width="150" height="60" as="geometry"/>
+                </mxCell>
+
+                <!-- Processes -->
+                <mxCell id="p1" value="P1: Analyse IDS (Suricata)" style="ellipse;fillColor=#f8cecc" vertex="1" parent="1">
+                    <mxGeometry x="200" y="200" width="180" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="p2" value="P2: Pipeline Logs&#10;(Filebeat / Logstash)" style="ellipse;fillColor=#fff2cc" vertex="1" parent="1">
+                    <mxGeometry x="420" y="200" width="200" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="p3" value="P3: Feature Extraction" style="ellipse;fillColor=#d5e8d4" vertex="1" parent="1">
+                    <mxGeometry x="650" y="200" width="180" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="p4" value="P4: Détection IA (LSTM-VAE)" style="ellipse;fillColor=#d5e8d4;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="860" y="200" width="200" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="p5" value="P5: Moteur de Décision" style="ellipse;fillColor=#e1d5e7;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1100" y="200" width="200" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="p6" value="P6: Réponse Automatique" style="ellipse;fillColor=#f8cecc;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1350" y="200" width="200" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="p7" value="P7: Apprentissage" style="ellipse;fillColor=#d5e8d4" vertex="1" parent="1">
+                    <mxGeometry x="650" y="380" width="180" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="p8" value="P8: Réentraînement IA" style="ellipse;fillColor=#d5e8d4" vertex="1" parent="1">
+                    <mxGeometry x="860" y="380" width="200" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="p9" value="P9: Sensibilisation" style="ellipse;fillColor=#dae8fc" vertex="1" parent="1">
+                    <mxGeometry x="1100" y="520" width="200" height="70" as="geometry"/>
+                </mxCell>
+
+                <!-- Data Stores -->
+                <mxCell id="d1" value="D1: Logs&#10;(Elasticsearch)" style="shape=cylinder;fillColor=#fff2cc" vertex="1" parent="1">
+                    <mxGeometry x="420" y="80" width="180" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="d2" value="D2: Audit Logs" style="shape=cylinder;fillColor=#fff2cc" vertex="1" parent="1">
+                    <mxGeometry x="1350" y="80" width="180" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="d3" value="D3: Threat Intelligence" style="shape=cylinder;fillColor=#ffe6cc" vertex="1" parent="1">
+                    <mxGeometry x="1050" y="380" width="200" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="d4" value="D4: Dataset Propre" style="shape=cylinder;fillColor=#d5e8d4" vertex="1" parent="1">
+                    <mxGeometry x="650" y="500" width="180" height="70" as="geometry"/>
+                </mxCell>
+
+                <!-- Main Flow -->
+                <mxCell edge="1" source="net" target="p1" parent="1"/>
+                <mxCell edge="1" source="p1" target="p2" parent="1"/>
+                <mxCell edge="1" source="p2" target="p3" parent="1"/>
+                <mxCell edge="1" source="p3" target="p4" parent="1"/>
+                <mxCell edge="1" source="p4" target="p5" parent="1"/>
+                <mxCell edge="1" source="p5" target="p6" parent="1"/>
+
+                <!-- Storage -->
+                <mxCell edge="1" source="p2" target="d1" parent="1"/>
+                <mxCell edge="1" source="p6" target="d2" parent="1"/>
+
+                <!-- Learning Loop -->
+                <mxCell edge="1" source="p6" target="p7" parent="1"/>
+                <mxCell edge="1" source="p7" target="d4" parent="1"/>
+                <mxCell edge="1" source="d4" target="p8" parent="1"/>
+                <mxCell edge="1" source="p8" target="p4" parent="1"/>
+
+                <!-- Threat Intel -->
+                <mxCell edge="1" source="d3" target="p7" parent="1"/>
+                <mxCell edge="1" source="d3" target="p5" parent="1"/>
+
+                <!-- Awareness -->
+                <mxCell edge="1" source="p7" target="p9" parent="1"/>
+                <mxCell edge="1" source="p9" target="users" parent="1"/>
+
+                <!-- Admin -->
+                <mxCell edge="1" source="admin" target="p8" parent="1"/>
+
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
