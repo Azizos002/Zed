@@ -1,116 +1,95 @@
-<mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff">
-  <root>
-    <mxCell id="0" />
-    <mxCell id="1" parent="0" />
+<mxfile host="app.diagrams.net">
+  <diagram name="CyberDefense Architecture PRO">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" connect="1">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
 
-    <mxCell id="Plane_Data" value="DATA PLANE&lt;br&gt;(Couche de Perception et d&#39;Ingestion)" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;startSize=40;rounded=1;arcSize=10;" vertex="1" parent="1">
-      <mxGeometry x="100" y="100" width="850" height="160" as="geometry" />
-    </mxCell>
-    
-    <mxCell id="Plane_Control" value="CONTROL PLANE&lt;br&gt;(Couche d&#39;Intelligence et d&#39;Analyse)" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#666666;fontStyle=1;startSize=40;rounded=1;arcSize=10;" vertex="1" parent="1">
-      <mxGeometry x="100" y="300" width="850" height="160" as="geometry" />
-    </mxCell>
-    
-    <mxCell id="Plane_Response" value="RESPONSE PLANE&lt;br&gt;(Couche d&#39;Action, d&#39;Orchestration et d&#39;Agents)" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#EFEFEF;strokeColor=#666666;fontStyle=1;startSize=40;rounded=1;arcSize=10;" vertex="1" parent="1">
-      <mxGeometry x="100" y="500" width="850" height="230" as="geometry" />
-    </mxCell>
+        <!-- ===== PART 1: DETECTION & RESPONSE ===== -->
 
-    <mxCell id="Suricata" value="Suricata (NIDS)&lt;br&gt;&lt;i&gt;AF_PACKET / Zero-Copy&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1" vertex="1" parent="1">
-      <mxGeometry x="180" y="145" width="160" height="70" as="geometry" />
-    </mxCell>
-    
-    <mxCell id="Logstash" value="Logstash (ETL)&lt;br&gt;&lt;i&gt;Pipeline de Normalisation&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
-      <mxGeometry x="450" y="145" width="160" height="70" as="geometry" />
-    </mxCell>
-    
-    <mxCell id="Elasticsearch" value="Elasticsearch&lt;br&gt;&lt;i&gt;Cluster Indexé&lt;/i&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;strokeColor=#000000;fontStyle=1" vertex="1" parent="1">
-      <mxGeometry x="720" y="130" width="120" height="100" as="geometry" />
-    </mxCell>
+        <mxCell id="traffic" value="Trafic Réseau" style="ellipse;fillColor=#dae8fc;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="140" height="60" as="geometry"/>
+        </mxCell>
 
-    <mxCell id="Extractor" value="Extracteur (Python)&lt;br&gt;&lt;i&gt;Requêtes Séquentielles&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
-      <mxGeometry x="700" y="345" width="160" height="70" as="geometry" />
-    </mxCell>
-    
-    <mxCell id="LSTM" value="Modèle LSTM-VAE&    Keras K K K K K&    Keras K&lt;b&gt; Inférence IA &lt;/b&gt; Tensor Tensor Tensor Tensor Tensor TensorFlow Flow Flow Flow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1" vertex="1" parent="1">
-      <mxGeometry x="450" y="345" width="160" height="70" as="geometry" />
-    </mxCell>
+        <mxCell id="suricata" value="Suricata (IDS)" style="rounded=1;fillColor=#f8cecc;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="220" y="200" width="160" height="60" as="geometry"/>
+        </mxCell>
 
-    <mxCell id="SOAR" value="Orchestrateur SOAR&lt;br&gt;&lt;b&gt;(Moteur de Décision Python)&lt;/b&gt;" style="hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#E1D5E7;strokeColor=#000000;fontStyle=1" vertex="1" parent="1">
-      <mxGeometry x="440" y="570" width="180" height="80" as="geometry" />
-    </mxCell>
-    
-    <mxCell id="FW" value="Pare-feu (iptables)&lt;br&gt;&lt;i&gt;Confinement IP&lt;/i&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#F8CECC;strokeColor=#b85450;fontColor=#333333;" vertex="1" parent="1">
-      <mxGeometry x="180" y="575" width="160" height="70" as="geometry" />
-    </mxCell>
-    
-    <mxCell id="CTI" value="Agent CTI Proactif&lt;br&gt;&lt;i&gt;OSINT &amp; Scraping&lt;/i&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#000000;" vertex="1" parent="1">
-      <mxGeometry x="720" y="530" width="120" height="60" as="geometry" />
-    </mxCell>
-    
-    <mxCell id="FormAgent" value="Agent Formation&lt;br&gt;&lt;i&gt;Ingénierie Cognitive&lt;/i&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#000000;" vertex="1" parent="1">
-      <mxGeometry x="720" y="640" width="120" height="60" as="geometry" />
-    </mxCell>
+        <mxCell id="filebeat" value="Filebeat" style="rounded=1;fillColor=#fff2cc" vertex="1" parent="1">
+          <mxGeometry x="420" y="120" width="120" height="50" as="geometry"/>
+        </mxCell>
 
-    <mxCell id="Edge1" edge="1" parent="1" source="Suricata" target="Logstash" style="endArrow=block;endFill=1;strokeWidth=1;strokeColor=#000000;">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-    <mxCell id="Edge2" edge="1" parent="1" source="Logstash" target="Elasticsearch" style="endArrow=block;endFill=1;strokeWidth=1;strokeColor=#000000;">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <mxCell id="logstash" value="Logstash" style="rounded=1;fillColor=#fff2cc" vertex="1" parent="1">
+          <mxGeometry x="560" y="120" width="120" height="50" as="geometry"/>
+        </mxCell>
 
-    <mxCell id="Edge3" value="Fenêtre temporelle" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;strokeColor=#000000;" edge="1" parent="1" source="Elasticsearch" target="Extractor">
-      <mxGeometry relative="1" as="geometry">
-         <Array as="points">
-            <mxPoint x="780" y="270" />
-         </Array>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="Edge4" value="Séquences normalisées" style="edgeStyle=none;html=1;strokeWidth=1;strokeColor=#000000;" edge="1" parent="1" source="Extractor" target="LSTM">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <mxCell id="elastic" value="Elasticsearch" style="rounded=1;fillColor=#fff2cc" vertex="1" parent="1">
+          <mxGeometry x="700" y="120" width="150" height="50" as="geometry"/>
+        </mxCell>
 
-    <mxCell id="Edge5" value="Score Anomalie (MSE)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#B85450;" edge="1" parent="1" source="LSTM" target="SOAR">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
+        <mxCell id="features" value="Feature Extraction" style="rounded=1;fillColor=#d5e8d4" vertex="1" parent="1">
+          <mxGeometry x="900" y="120" width="160" height="50" as="geometry"/>
+        </mxCell>
 
-    <mxCell id="Edge6" value="Alerte Déterministe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeWidth=1;strokeColor=#0000FF;" edge="1" parent="1" source="Suricata" target="SOAR">
-      <mxGeometry relative="1" as="geometry">
-        <Array as="points">
-          <mxPoint x="260" y="260" />
-          <mxPoint x="400" y="260" />
-          <mxPoint x="400" y="610" />
-        </Array>
-      </mxGeometry>
-    </mxCell>
+        <mxCell id="ai" value="LSTM-VAE (AI)" style="rounded=1;fillColor=#d5e8d4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1080" y="120" width="160" height="50" as="geometry"/>
+        </mxCell>
 
-    <mxCell id="Edge7" value="Ordre de Blocage (Drop)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#333333;" edge="1" parent="1" source="SOAR" target="FW">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-    <mxCell id="Edge8" value="Déclencheur" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;" edge="1" parent="1" source="SOAR" target="CTI">
-      <mxGeometry relative="1" as="geometry">
-         <Array as="points">
-            <mxPoint x="670" y="560" />
-         </Array>
-      </mxGeometry>
-    </mxCell>
-    <mxCell id="Edge9" value="Déclencheur" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;" edge="1" parent="1" source="SOAR" target="FormAgent">
-      <mxGeometry relative="1" as="geometry">
-         <Array as="points">
-            <mxPoint x="670" y="670" />
-         </Array>
-      </mxGeometry>
-    </mxCell>
+        <mxCell id="decision" value="Moteur de Décision" style="rounded=1;fillColor=#e1d5e7;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1080" y="220" width="180" height="60" as="geometry"/>
+        </mxCell>
 
-    <mxCell id="Edge10" value="Mise à jour Règles / IOCs (Flux Proactif)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeWidth=2;strokeColor=#33A02C;" edge="1" parent="1" source="CTI" target="Suricata">
-      <mxGeometry relative="1" as="geometry">
-         <Array as="points">
-           <mxPoint x="780" y="470" />
-           <mxPoint x="980" y="470" />
-           <mxPoint x="980" y="60" />
-           <mxPoint x="260" y="60" />
-         </Array>
-      </mxGeometry>
-    </mxCell>
+        <mxCell id="response" value="Réponse Automatique&#10;(Block / Limit / Alert)" style="rounded=1;fillColor=#f8cecc;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1300" y="220" width="220" height="70" as="geometry"/>
+        </mxCell>
 
-  </root>
-</mxGraphModel>
+        <!-- ===== PART 2: LEARNING & INTELLIGENCE ===== -->
+
+        <mxCell id="learning" value="Apprentissage &amp; Réentraînement" style="rounded=1;fillColor=#d5e8d4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="850" y="360" width="260" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="intel" value="Threat Intelligence&#10;(CVE, IOC, CERT)" style="rounded=1;fillColor=#ffe6cc;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1150" y="360" width="240" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="human" value="Responsable Sécurité&#10;(Validation)" style="rounded=1;fillColor=#f5f5f5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1000" y="460" width="240" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== PART 3: AWARENESS ===== -->
+
+        <mxCell id="awareness" value="Prévention &amp; Sensibilisation&#10;(Formations, Quiz)" style="rounded=1;fillColor=#dae8fc;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1250" y="460" width="260" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== EDGES MAIN FLOW ===== -->
+
+        <mxCell edge="1" source="traffic" target="suricata" parent="1"/>
+        <mxCell edge="1" source="suricata" target="filebeat" parent="1"/>
+        <mxCell edge="1" source="filebeat" target="logstash" parent="1"/>
+        <mxCell edge="1" source="logstash" target="elastic" parent="1"/>
+        <mxCell edge="1" source="elastic" target="features" parent="1"/>
+        <mxCell edge="1" source="features" target="ai" parent="1"/>
+        <mxCell edge="1" source="ai" target="decision" parent="1"/>
+        <mxCell edge="1" source="decision" target="response" parent="1"/>
+
+        <!-- ===== FEEDBACK LOOP ===== -->
+
+        <mxCell edge="1" source="response" target="learning" parent="1"/>
+        <mxCell edge="1" source="learning" target="human" parent="1"/>
+        <mxCell edge="1" source="human" target="ai" parent="1"/>
+
+        <!-- ===== THREAT INTEL LINKS ===== -->
+
+        <mxCell edge="1" source="intel" target="learning" parent="1"/>
+        <mxCell edge="1" source="intel" target="decision" parent="1"/>
+
+        <!-- ===== AWARENESS FLOW ===== -->
+
+        <mxCell edge="1" source="learning" target="awareness" parent="1"/>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
