@@ -17,3 +17,5 @@ __pycache__/
 
 # Fichiers de configuration sensibles
 .env
+ml_node/cicids2017.zip
+*.keras
