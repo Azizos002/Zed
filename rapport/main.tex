@@ -1,0 +1,43 @@
+% Rapport - LSTM-VAE NIDS
+% Build: xelatex -> biber -> xelatex x2
+\documentclass[11pt,a4paper]{report}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+% Bibliography (biblatex + biber)
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{references.bib}
+
+% Acronyms (simple file)
+\input{acronyms.tex}
+
+% Document metadata
+\title{Plateforme Edge-to-Core pour la Détection d'Anomalies Réseau : LSTM-VAE pour NIDS temps réel}
+\author{Aziz}
+\date{\today}
+
+\begin{document}
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+\cleardoublepage
+\pagenumbering{arabic}
+
+% Intro section included from sections/
+\input{sections/intro.tex}
+
+\cleardoublepage
+\printbibliography
+\end{document}
