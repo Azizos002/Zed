@@ -1,0 +1,35 @@
+% =====================
+% Introduction générale (version réécrite)
+% =====================
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+L'ère contemporaine est marquée par une transformation radicale des infrastructures numériques : convergence du cloud, multiplication des endpoints et hyper‑connectivité des architectures distribuées. Cette évolution a profondément élargi la surface d'attaque et complexifié la gouvernance de la sécurité. Les défenses traditionnelles, fondées sur des signatures statiques et des règles humaines, atteignent aujourd'hui leurs limites face à des menaces automatisées, polymorphes et constamment renouvelées.
+
+Ce mémoire présente la conception, l'implémentation et l'évaluation d'une plateforme Edge‑to‑Core de cyberdéfense visant à détecter, corréler et contenir des anomalies réseau inédites (Zero‑Day) en temps réel. La plateforme repose sur trois principes d'ingénierie :
+\begin{itemize}
+  \item séparation stricte des plans (acquisition edge / inference ML / orchestration décisionnelle), garantissant résilience et tolérance aux pannes ;
+  \item traitement stream‑first : chaque événement est traité à la milliseconde près, sans accumulations batch dans le chemin critique ;
+  \item explicabilité opérationnelle : toute action automatisée est assortie d'un contexte de décision et d'un mécanisme d'intervention humaine.
+\end{itemize}
+
+La solution technique combine une collecte déterministe des événements réseau (Suricata) avec une chaîne d'ingestion évènementielle (Kafka) et une couche d'inférence basée sur un Auto‑Encodeur Variationnel récurrent (LSTM‑VAE). Le LSTM‑VAE apprend la distribution probabiliste du trafic légitime à partir de fenêtres temporelles de flux ; toute déviation significative se traduit par une augmentation de l'erreur de reconstruction (MSE), utilisée comme indicateur d'anomalie. Les alertes issues de l'analyse comportementale sont corrélées en temps réel avec les alertes signatures (Suricata) par un orchestrateur SOAR, qui applique une logique graduée de confinement (journalisation, alerte, blocage distant via SSH vers le point d'ingress).
+
+Sur le plan méthodologique, l'étude s'appuie sur un protocole d'évaluation rigoureux :
+\begin{enumerate}
+  \item préparation reproductible des jeux de données (CIC‑IDS + enrichissements infra), avec normalisation par bornes fixes ;
+  \item entraînement contrôlé du modèle (EarlyStopping, restauration des meilleurs poids) et calcul statistique du seuil d'anomalie ($\mu + 3\sigma$) ;
+  \item validation croisée jour‑à‑jour et validation sur trafic capturé en production pour mesurer les faux‑positifs par source IP ;
+  \item plan de mitigation opérationnelle (allowlist pour actifs critiques, procédure de retrait/re‑entrainement). 
+\end{enumerate}
+
+Les contributions principales de ce travail sont :
+\begin{itemize}
+  \item une architecture Edge‑to‑Core résiliente et testée sur une infrastructure multi‑VM répliquant un contexte opérationnel réaliste ;
+  \item l'ingénierie et l'optimisation d'un chemin d'inférence temps réel (tf.function, warm‑up, per‑sequence latency $\sim$1–2 ms) ;
+  \item une stratégie de détection non‑supervisée explicitement conçue pour minimiser les faux positifs via bornes fixes et règles de persistance (3 dépassements consécutifs) ;
+  \item l'intégration opérationnelle par SOAR garantissant que les actions de confinement ciblent systématiquement le point d'ingress via SSH, tout en protégeant les actifs critiques.
+\end{itemize}
+
+La présente version documente la Release~1 (Détection) et l'amorce de la Release~2 (Prévention). Le reste du mémoire détaille l'architecture, la mise en œuvre logicielle, les protocoles d'entraînement et de validation, les résultats expérimentaux et un plan d'industrialisation couvrant les Sprints suivants.
