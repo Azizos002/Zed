@@ -1,0 +1,21 @@
+# Environnements virtuels
+venv/
+venv-edge/
+venv-ml/
+__pycache__/
+
+# Datasets et Logs (Trop lourds)
+*.csv
+*.json
+*.log
+*.pcap
+
+# Modèles de Machine Learning
+*.h5
+*.pkl
+*.pt
+
+# Fichiers de configuration sensibles
+.env
+ml_node/cicids2017.zip
+*.keras
